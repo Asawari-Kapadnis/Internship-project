@@ -76,9 +76,10 @@
 
 
 .logo {
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 700;
   letter-spacing: 1px;
+  color: rgb(255, 255, 255);
 }
 
 
@@ -92,8 +93,8 @@
 .nav-links a {
   text-decoration: none;
   color: white;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 700;
   transition: 0.25s;
 }
 
@@ -101,10 +102,21 @@
   opacity: 0.8;
 }
 
+.dashboard-link {
+  background: #22c55e;
+  color: white ;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.dashboard-link:hover {
+  background: #16a34a;
+}
 /* REGISTER BUTTON */
 .nav-btn {
   background: white;
-  color: #2563eb !important;
+  color: #2563eb ;
   padding: 8px 18px;
   border-radius: 8px;
   font-weight: 600;
@@ -115,6 +127,31 @@
   background: #e0e7ff;
 }
 
+/* User profile container */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Circle avatar */
+.avatar {
+  width: 32px;
+  height: 32px;
+  background: #111613;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Username text */
+.username {
+  color: white;
+  font-size: 14px;
+}
 
 /*logout*/
 .logout-btn {
@@ -124,7 +161,8 @@
   padding: 8px 18px;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: bold;
   transition: 0.25s;
 }
 
@@ -331,7 +369,8 @@
 .dashboard-subtitle {
   color: #cbd5f5;
   margin-bottom: 30px;
-  font-size: 15px;
+  font-size: 25px;
+  font-weight: 400;
 }
 
 
@@ -340,6 +379,7 @@
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 25px;
   margin-bottom: 35px;
+  
 }
 
 
@@ -362,12 +402,12 @@
 .card h3 {
   color: #cbd5f5;
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 26px;
 }
 
 .card p {
-  color: #60a5fa;
-  font-size: 22px;
+  color: #d2ac4b;
+  font-size: 25px;
   font-weight: bold;
 }
 
@@ -448,7 +488,7 @@
 
 .sider-title {
   color: #facc15;
-  font-size: 20px;
+  font-size: 25px;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -460,7 +500,9 @@
   padding: 12px 15px;
   border-radius: 10px;
   transition: 0.3s;
-  font-size: 15px;
+  font-size: 20px;
+  font-weight: 700;
+   border: 1px solid rgba(175, 110, 30, 0.1);
 }
 
 
@@ -503,6 +545,7 @@
 
   padding: 25px;
   border-radius: 16px;
+ 
 }
 
 
@@ -523,7 +566,7 @@
 .workout-card {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
-
+ 
   padding: 20px;
   border-radius: 14px;
 
@@ -531,8 +574,10 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 
-  border: 1px solid rgba(255,255,255,0.1);
+  /* border: 1px solid rgba(255,255,255,0.1); */
   transition: 0.3s;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .workout-card:hover {
@@ -541,13 +586,29 @@
 
 
 .workout-card input {
-  background: rgba(255,255,255,0.1);
-  color: white;
-  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+ 
+  border: 1px solid rgba(255, 255, 255, 0.1); ;
   padding: 10px;
   border-radius: 8px;
+  font-size: 20px;
+  color: #ffffff;
+  
 }
-
+input[type="checkbox"] {
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+.workout-card input::placeholder {
+  color: 
+  rgba(255, 255, 255, 0.6);
+}
+.list{
+  margin-right: 20px;
+}
 
 .remove-btn {
   grid-column: span 2;
@@ -556,6 +617,7 @@
   border: none;
   padding: 8px;
   border-radius: 8px;
+   font-size: 20px;
 }
 
 .remove-btn:hover {
@@ -576,6 +638,7 @@
   padding: 12px;
   border-radius: 10px;
   cursor: pointer;
+   font-size: 20px;
 }
 
 .add-btn:hover {
@@ -590,6 +653,7 @@
   padding: 12px;
   border-radius: 10px;
   cursor: pointer;
+   font-size: 20px;
 }
 
 .submit-btn:hover {
@@ -600,6 +664,7 @@
   max-width: 320px;
   background: white;
   padding: 20px;
+
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 
@@ -608,7 +673,10 @@
   overflow-y: auto;    
   background: linear-gradient(to right, #0f172a, #1e3a8a);
   border-radius: 16px;
-  color:#d6b230
+  color:#d6b230;
+  font-size: 20px;
+  font-weight: bold;
+  
 }
 
 .exercise-container {
@@ -622,6 +690,9 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
     align-items: start;
+    display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .exercise-card {
@@ -630,7 +701,9 @@
   padding: 15px;
   color: white;
   backdrop-filter: blur(10px);
-  transition: 0.3s;
+  width: 300px;
+  transition: all 0.3s ease;
+  font-size: 20px;
 }
 .exercise-card:hover {
   transform: translateY(-5px);
@@ -642,28 +715,39 @@
   border-radius: 10px;
  
 }
+.exercise-card.active img {
+  height: 50%;  
+  width: 50%;   
+  
+}
+.exercise-card.active {
+  width: 50%;
+  font-size: 30px;
+}
 
 .exercise-details {
   margin-top: 10px;
 }
 .detail-btn{
-  background-color: #3e83d1;
+  background-color: #70a8e9;
   border:none;
   border-radius: 5px;
-  height: 30px;
-  width: 100px;
-  color: #8c0707;
+  height: 40px;
+  width: 150px;
+  color: #cd0c0c;
+  font-weight: bold;
 }
 .detail-btn:hover{
   background-color: #dcdde1;
 }
 
 .achievements-page {
+   min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
   padding: 30px;
   text-align: center;
-  background: linear-gradient(to right, #0f172a, #1e3a8a);
-  min-height: 100vh;
-  color: white;
+  font-size: 20px;
 }
 
 .subtitle {
@@ -672,10 +756,34 @@
 }
 
 .achievements-grid {
-  display: grid;
+   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  padding: 30px;
+  margin-top: 20px;
+}
+.icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+/* unlocked */
+.unlocked {
+  border: 2px solid #22c55e;
+}
+
+.unlocked .icon {
+  color: #22c55e;
+}
+
+/* locked */
+.locked {
+  opacity: 0.5;
+}
+
+.locked .icon {
+  color: #64748b;
 }
 
 .card {
@@ -683,8 +791,13 @@
   padding: 20px;
   border-radius: 16px;
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 20px rgba(224, 187, 63, 0.3);
   transition: 0.3s;
+   background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s;
+  
 }
 
 .card:hover {
@@ -698,17 +811,19 @@
 .card h2 {
   font-size: 32px;
   margin: 10px 0;
+  
 }
 
-.share-btn {
+.share-card-btn {
   margin-top: 30px;
   padding: 15px 30px;
   border: none;
-  border-radius: 30px;
-  background: linear-gradient(to right, #3b82f6, #1d4ed8);
-  color: white;
-  font-size: 16px;
+  border-radius: 10px;
+  background-color:rgb(8, 35, 8);
+  color: rgb(211, 183, 59);
+  font-size: 20px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .share-btn:hover {
@@ -716,7 +831,7 @@
 }
 
 .back-btn {
-  margin-bottom: 20px;
+  margin-top: 30px;
   padding: 10px 18px;
   border: none;
   border-radius: 8px;
@@ -728,4 +843,65 @@
 
 .back-btn:hover {
   opacity: 0.9;
+}
+
+/* Full page */
+.profile-page {
+  min-height: calc(100vh - 70px); /* avoids navbar overlap */
+  background: linear-gradient(to right, #0f172a, #1e3a8a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card */
+.profile-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  width: 350px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Title */
+.profile-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+
+/* Form */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Labels */
+.profile-form label {
+  font-size: 14px;
+  color: #334155;
+}
+
+/* Inputs */
+.profile-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+}
+
+/* Button */
+.primary-btn {
+  background: #22c55e;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.primary-btn:hover {
+  background: #16a34a;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ added
 import API from "../api/axios";
-
 
 import {
   LineChart,
@@ -15,6 +15,7 @@ import Sider from "./Sider";
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
+  const navigate = useNavigate(); // ✅ added
 
   useEffect(() => {
     const fetchDashboard = async () => {
@@ -32,24 +33,18 @@ const Dashboard = () => {
   }));
 
   return (
-   <div className="dashboard-page">
+    <div className="dashboard-page">
+      <div className="sider-container">
+        <Sider />
+      </div>
 
+      <div className="dashboard-container">
+        <h1 className="dashboard-title">Dashboard</h1>
+        <p className="dashboard-subtitle">
+          Here is a summary of your activity and progress
+        </p>
 
-  <div className="sider-container">
-    <Sider />   
-  </div>
-
-  
-  <div className="dashboard-container">
-
-    <h1 className="dashboard-title">Dashboard</h1>
-    <p className="dashboard-subtitle">
-      Here is a summary of your activity and progress
-    </p>
-
-       
         <div className="dashboard-cards">
-
           <div className="card">
             <h3>Total Workouts</h3>
             <p>{data.totalWorkouts}</p>
@@ -67,13 +62,15 @@ const Dashboard = () => {
 
           <div className="card actions">
             <h3>Quick Actions</h3>
-            <button className="primary-btn">Add Workout</button>
-    
+            <button
+              className="primary-btn"
+              onClick={() => navigate("/AddWorkout")} // ✅ navigation added
+            >
+              Add Workout
+            </button>
           </div>
-
         </div>
 
-  
         <div className="chart-card">
           <h3>Workouts in Last 7 Days</h3>
 
@@ -86,9 +83,7 @@ const Dashboard = () => {
               <Line type="monotone" dataKey="calories" />
             </LineChart>
           </ResponsiveContainer>
-
         </div>
-
       </div>
     </div>
   );

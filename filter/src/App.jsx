@@ -10,6 +10,8 @@ import "./App.css";
 import AddWorkout from "./pages/AddWorkout";
 import Exercise from "./pages/Exercises";
 import Achievements from "./pages/Achivements";
+import Profile from "./pages/profile";
+
 
 
 function App() {
@@ -35,6 +37,7 @@ function App() {
          <Route path="/AddWorkout" element={<AddWorkout/>} /> 
          <Route path="/exercises" element={<Exercise/>}/>
          <Route path="/achivements" element={<Achievements/>}/>
+         <Route path="/profile" element={<Profile />} />
 
         </Routes>
       </BrowserRouter>

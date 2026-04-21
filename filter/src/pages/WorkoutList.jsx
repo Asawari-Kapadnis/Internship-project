@@ -48,7 +48,7 @@ return (
           checked={w.selected}
           onChange={()=>toggleWorkout(index)}
         />
-        <ul>
+        <ul className="list">
           <li>{w.workoutName}</li>
            <li>{w.sets} sets</li>
             <li>{w.reps} reps</li>

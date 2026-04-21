@@ -12,11 +12,20 @@ const Navbar = () => {
         {!user && <Link to="/login">Login</Link>}
         {!user && <Link to="/register" className="nav-btn">Register</Link>}
 
-        {user && <Link to="/dashboard">Dashboard</Link>}
         {user && (
-          <button className="logout-btn" onClick={logout}>
-            Logout
-          </button>
+          <>
+            
+            <Link to="/profile" className="avatar">
+              {user.name?.charAt(0).toUpperCase()}
+            </Link>
+
+             <Link to="/dashboard" className="dashboard-link">
+              Dashboard
+            </Link>
+            <button className="logout-btn" onClick={logout}>
+              Logout
+            </button>
+          </>
         )}
       </div>
     </nav>

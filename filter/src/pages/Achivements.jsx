@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import API from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import StarIcon from "@mui/icons-material/Star";
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
+import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 
 function Achievements() {
   const [achievements, setAchievements] = useState([]);
-const [workouts, setWorkouts] = useState([]);
-
-const navigate = useNavigate();
+  const [workouts, setWorkouts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
@@ -25,50 +28,64 @@ const navigate = useNavigate();
     }
   };
 
-  //  MAIN LOGIC
   const processAchievements = (workouts) => {
     const total = workouts.length;
 
-    const dates = workouts
-      .map((w) => new Date(w.date))
-      .sort((a, b) => b - a);
+    const ach = [
+      {
+        title: "First Workout",
+        unlocked: total >= 1,
+        target: 1,
+        icon: <EmojiEventsIcon />,
+        shareText: "First workout completed"
+      },
+      {
+        title: "5 Workouts",
+        unlocked: total >= 5,
+        target: 5,
+        icon: <StarIcon />,
+        shareText: "Completed 5 workouts"
+      },
+      {
+        title: "10 Workouts",
+        unlocked: total >= 10,
+        target: 10,
+        icon: <EmojiEventsIcon />,
+        shareText: "10 workouts milestone"
+      },
+      {
+        title: "20 Workouts",
+        unlocked: total >= 20,
+        target: 20,
+        icon: <RocketLaunchIcon />,
+        shareText: "20 workouts completed"
+      },
+      {
+        title: "30 Workouts",
+        unlocked: total >= 30,
+        target: 30,
+        icon: <LocalFireDepartmentIcon />,
+        shareText: "30 workouts achieved"
+      },
+      {
+        title: "50 Workouts",
+        unlocked: total >= 50,
+        target: 50,
+        icon: <LocalFireDepartmentIcon />,
+        shareText: "50 workouts milestone"
+      },
+      {
+        title: "100 Workouts",
+        unlocked: total >= 100,
+        target: 100,
+        icon: <EmojiEventsIcon />,
+        shareText: "100 workouts completed"
+      }
+    ];
 
-    //  STREAK
-    let streak = 1;
-    for (let i = 0; i < dates.length - 1; i++) {
-      const diff = (dates[i] - dates[i + 1]) / (1000 * 60 * 60 * 24);
-      if (diff <= 1) streak++;
-      else break;
-    }
-
-    //  WEEKLY
-    const weekAgo = new Date();
-    weekAgo.setDate(weekAgo.getDate() - 7);
-    const weekly = workouts.filter(
-      (w) => new Date(w.date) >= weekAgo
-    );
-
-    //  COMEBACK
-    let comeback = false;
-    for (let i = 0; i < dates.length - 1; i++) {
-      const diff = (dates[i] - dates[i + 1]) / (1000 * 60 * 60 * 24);
-      if (diff > 3) comeback = true;
-    }
-
-    //  ACHIEVEMENTS LIST
-   const ach = [
-  { title: " First Workout", unlocked: total >= 1, target: 1, shareText: "First workout done 💪" },
-  { title: " 5 Workouts", unlocked: total >= 5, target: 5, shareText: "Completed 5 workouts 🔥" },
-  { title: " 10 Workouts", unlocked: total >= 10, target: 10, shareText: "10 workouts milestone 🏆" },
-  { title: " 20 Workouts", unlocked: total >= 20, target: 20, shareText: "20 workouts done 🚀" },
-  { title: " 30 Workouts", unlocked: total >= 30, target: 30, shareText: "30 workouts strong 💪" },
-  { title: " 50 Workouts", unlocked: total >= 50, target: 50, shareText: "50 workouts beast mode 🔥" },
-  { title: " 100 Workouts", unlocked: total >= 100, target: 100, shareText: "100 workouts legend 🏆" }
-];
     setAchievements(ach);
   };
 
-  // SHARE FUNCTION
   const handleShare = (text) => {
     if (navigator.share) {
       navigator.share({ text });
@@ -87,14 +104,16 @@ const navigate = useNavigate();
             key={i}
             className={`card ${a.unlocked ? "unlocked" : "locked"}`}
           >
+            <div className="icon">{a.icon}</div>
+
             <h3>{a.title}</h3>
 
-<p>
-  {a.unlocked
-    ? "Unlocked "
-    : `${workouts.length}/${a.target} `}
-</p>
-            {/* Show share only if unlocked */}
+            <p>
+              {a.unlocked
+                ? "Unlocked"
+                : `${workouts.length}/${a.target}`}
+            </p>
+
             {a.unlocked && (
               <button
                 className="share-card-btn"
@@ -106,12 +125,13 @@ const navigate = useNavigate();
           </div>
         ))}
       </div>
+
       <button
-  className="back-btn"
-  onClick={() => navigate("/dashboard")}
->
-   Back to Dashboard
-</button>
+        className="back-btn"
+        onClick={() => navigate("/dashboard")}
+      >
+        Back to Dashboard
+      </button>
     </div>
   );
 }

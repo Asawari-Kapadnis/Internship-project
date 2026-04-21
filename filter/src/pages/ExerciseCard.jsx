@@ -1,23 +1,16 @@
-import { useState } from "react";
-
-function ExerciseCard({ exercise, onAdd }) {
-  const [showDetails, setShowDetails] = useState(false);
-
+function ExerciseCard({ exercise, isActive, onToggle }) {
   return (
-    <div className="exercise-card">
+    <div className={`exercise-card ${isActive ? "active" : ""}`}>
 
-    
       <img src={exercise.image} alt={exercise.name} />
       <h3>{exercise.name}</h3>
 
-      <button className="detail-btn"onClick={() => setShowDetails(!showDetails)}>
-        {showDetails ? "Hide Details" : "View Details"}
+      <button className="detail-btn" onClick={onToggle}>
+        {isActive ? "Back To Library" : "View Details"}
       </button>
 
-     
-      {showDetails && (
+      {isActive && (
         <div className="exercise-details">
-
           <p><strong>Category:</strong> {exercise.category}</p>
           <p><strong>Difficulty:</strong> {exercise.difficulty}</p>
 
@@ -34,12 +27,6 @@ function ExerciseCard({ exercise, onAdd }) {
               <li key={i}>{b}</li>
             ))}
           </ul>
-
-        
-          {/* <button onClick={() => onAdd(exercise)}>
-            Add to Workout
-          </button> */}
-
         </div>
       )}
     </div>
